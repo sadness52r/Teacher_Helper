@@ -16,5 +16,10 @@ namespace Teacher_Helper
         {
             InitializeComponent();
         }
+
+        private void FCreateDB_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

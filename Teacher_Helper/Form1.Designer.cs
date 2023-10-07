@@ -36,9 +36,10 @@ namespace Teacher_Helper
             // 
             // bCreateDB
             // 
-            this.bCreateDB.Location = new System.Drawing.Point(199, 35);
+            this.bCreateDB.Location = new System.Drawing.Point(149, 28);
+            this.bCreateDB.Margin = new System.Windows.Forms.Padding(2);
             this.bCreateDB.Name = "bCreateDB";
-            this.bCreateDB.Size = new System.Drawing.Size(384, 139);
+            this.bCreateDB.Size = new System.Drawing.Size(288, 113);
             this.bCreateDB.TabIndex = 0;
             this.bCreateDB.Text = "CREATE DATA BASE";
             this.bCreateDB.UseVisualStyleBackColor = true;
@@ -46,21 +47,27 @@ namespace Teacher_Helper
             // 
             // bImportDB
             // 
-            this.bImportDB.Location = new System.Drawing.Point(199, 227);
+            this.bImportDB.Location = new System.Drawing.Point(149, 184);
+            this.bImportDB.Margin = new System.Windows.Forms.Padding(2);
             this.bImportDB.Name = "bImportDB";
-            this.bImportDB.Size = new System.Drawing.Size(384, 139);
+            this.bImportDB.Size = new System.Drawing.Size(288, 113);
             this.bImportDB.TabIndex = 1;
             this.bImportDB.Text = "IMPORT DATA BASE";
             this.bImportDB.UseVisualStyleBackColor = true;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "text files(*.txt)|*.txt*";
+            this.openFileDialog1.InitialDirectory = "AppDomain.CurrentDomain.BaseDirectory";
             // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.bImportDB);
             this.Controls.Add(this.bCreateDB);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

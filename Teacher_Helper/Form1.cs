@@ -6,31 +6,30 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Teacher_Helper
 {
     public partial class FMain : Form
     {
-        OpenFileDialog fileDialog;
+        private string pathNames;
 
         public FMain()
         {
+            
             InitializeComponent();
         }
 
         private void bCreateDB_Click(object sender, EventArgs e)
         {
-            fileDialog = new OpenFileDialog();
-            fileDialog.Title = "File";
-            fileDialog.Filter = "text files(*.txt)|*.txt*";
-            fileDialog.InitialDirectory = "../..Names";
-            fileDialog.ShowDialog();
-        }
-
-        private void fileDialog_FileOk(object sender, CancelEventArgs e)
-        {
-
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pathNames = openFileDialog1.FileName;
+                DataBaseController.CreateDB(pathNames);
+                FCreateDB fCreateDB = new FCreateDB();
+                fCreateDB.Show();
+            }
         }
     }
 }
