@@ -1,7 +1,7 @@
 ﻿
 namespace Teacher_Helper
 {
-    partial class FCreateDB
+    partial class FView
     {
         /// <summary>
         /// Required designer variable.
@@ -44,19 +44,21 @@ namespace Teacher_Helper
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 10);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(631, 388);
+            this.dataGridView1.Size = new System.Drawing.Size(473, 315);
             this.dataGridView1.TabIndex = 0;
             // 
             // bStudents
             // 
-            this.bStudents.Location = new System.Drawing.Point(21, 410);
+            this.bStudents.Location = new System.Drawing.Point(16, 333);
+            this.bStudents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bStudents.Name = "bStudents";
-            this.bStudents.Size = new System.Drawing.Size(100, 23);
+            this.bStudents.Size = new System.Drawing.Size(75, 19);
             this.bStudents.TabIndex = 1;
             this.bStudents.Text = "STUDENTS";
             this.bStudents.UseVisualStyleBackColor = true;
@@ -64,9 +66,10 @@ namespace Teacher_Helper
             // 
             // bVariants
             // 
-            this.bVariants.Location = new System.Drawing.Point(127, 410);
+            this.bVariants.Location = new System.Drawing.Point(95, 333);
+            this.bVariants.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bVariants.Name = "bVariants";
-            this.bVariants.Size = new System.Drawing.Size(100, 23);
+            this.bVariants.Size = new System.Drawing.Size(75, 19);
             this.bVariants.TabIndex = 2;
             this.bVariants.Text = "VARIANTS";
             this.bVariants.UseVisualStyleBackColor = true;
@@ -74,9 +77,10 @@ namespace Teacher_Helper
             // 
             // bTeacherT
             // 
-            this.bTeacherT.Location = new System.Drawing.Point(75, 439);
+            this.bTeacherT.Location = new System.Drawing.Point(56, 357);
+            this.bTeacherT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bTeacherT.Name = "bTeacherT";
-            this.bTeacherT.Size = new System.Drawing.Size(100, 45);
+            this.bTeacherT.Size = new System.Drawing.Size(75, 37);
             this.bTeacherT.TabIndex = 3;
             this.bTeacherT.Text = "TEACHER TABLE";
             this.bTeacherT.UseVisualStyleBackColor = true;
@@ -84,9 +88,10 @@ namespace Teacher_Helper
             // 
             // bAdd
             // 
-            this.bAdd.Location = new System.Drawing.Point(423, 410);
+            this.bAdd.Location = new System.Drawing.Point(317, 333);
+            this.bAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(100, 23);
+            this.bAdd.Size = new System.Drawing.Size(75, 19);
             this.bAdd.TabIndex = 4;
             this.bAdd.Text = "ADD";
             this.bAdd.UseVisualStyleBackColor = true;
@@ -94,27 +99,29 @@ namespace Teacher_Helper
             // 
             // bEdit
             // 
-            this.bEdit.Location = new System.Drawing.Point(529, 410);
+            this.bEdit.Location = new System.Drawing.Point(397, 333);
+            this.bEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bEdit.Name = "bEdit";
-            this.bEdit.Size = new System.Drawing.Size(100, 23);
+            this.bEdit.Size = new System.Drawing.Size(75, 19);
             this.bEdit.TabIndex = 5;
             this.bEdit.Text = "EDIT";
             this.bEdit.UseVisualStyleBackColor = true;
             // 
             // bRemove
             // 
-            this.bRemove.Location = new System.Drawing.Point(477, 439);
+            this.bRemove.Location = new System.Drawing.Point(358, 357);
+            this.bRemove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bRemove.Name = "bRemove";
-            this.bRemove.Size = new System.Drawing.Size(100, 45);
+            this.bRemove.Size = new System.Drawing.Size(75, 37);
             this.bRemove.TabIndex = 6;
             this.bRemove.Text = "REMOVE";
             this.bRemove.UseVisualStyleBackColor = true;
             // 
-            // FCreateDB
+            // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 521);
+            this.ClientSize = new System.Drawing.Size(481, 423);
             this.Controls.Add(this.bRemove);
             this.Controls.Add(this.bEdit);
             this.Controls.Add(this.bAdd);
@@ -122,10 +129,10 @@ namespace Teacher_Helper
             this.Controls.Add(this.bVariants);
             this.Controls.Add(this.bStudents);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FCreateDB";
+            this.Name = "FMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FCreateDB";
             this.Load += new System.EventHandler(this.FCreateDB_Load);

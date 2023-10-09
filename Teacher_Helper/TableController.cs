@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Teacher_Helper
 {
-    enum SHOWED_T
+    public enum SHOWED_T
     {
         StudentsT, VariantsT, TeacherT
     }
@@ -47,6 +47,51 @@ namespace Teacher_Helper
             CreateTeacherTable();
         }
 
+        public void Add(string name, string surname, string patronymic)
+        {
+            int numberRepeated = CheckTheSame(name, surname, patronymic);
+            Student student;
+            Student.TotalNumber++;
+            if (numberRepeated != 0)
+                student = new Student(name, surname + numberRepeated.ToString(), patronymic, Student.TotalNumber, Variants[DataBaseController.rnd.Next(Variants.Count)]); 
+            else
+                student = new Student(name, surname, patronymic, Student.TotalNumber, Variants[DataBaseController.rnd.Next(Variants.Count)]);
+            Students.Add(student);
+            WriteToFile(student);
+        }
+
+        public void Add(string pathToFile)
+        {
+            int numberRepeated = CheckTheSame(pathToFile);
+            Variant variant;
+            Variant.TotalNumber++;
+            if (numberRepeated == 0)
+            {
+                string path_to_file = "var" + (Variants.Count + 1);
+                variant = new Variant(Variant.TotalNumber, path_to_file);
+                Variants.Add(variant);
+                WriteToFile(variant);
+            }
+        }
+
+        private int CheckTheSame(string name, string surname, string patronymic)
+        {
+            int numRepeated = 0;
+            foreach (var student in Students)
+                if (student.Name == name && (student.Surname == surname || student.Surname == surname + numRepeated.ToString()) && student.Patronymic == patronymic)
+                    numRepeated++;
+            return numRepeated;
+        }
+
+        private int CheckTheSame(string pathToFile)
+        {
+            int numRepeated = 0;
+            foreach (var variant in Variants)
+                if (variant.Path_to_file == pathToFile)
+                    numRepeated++;
+            return numRepeated;
+        }
+
         private void CreateHeader(FileStream file, StreamWriter sWriter)
         {
             if (file.Name.Contains("students.txt"))
@@ -73,6 +118,7 @@ namespace Teacher_Helper
                         sWriter.WriteLine(Variant.TotalNumber.ToString() + "\t\t" + path_to_file);
                         Variants.Add(variant);
                     }
+
                 }
             }
         }
@@ -103,14 +149,26 @@ namespace Teacher_Helper
                     CreateHeader(fStreamTeacherTable, sWriter);
 
                     foreach (var student in Students)
-                    {
                         sWriter.WriteLine(student.Surname + "\t\t\t" + student.Variant.Path_to_file + '\n' + student.Name + '\n' + student.Patronymic + '\n');
-                    }
                 }
             }
         }
 
-        void ReadNames(FileStream fileNames)
+        private void WriteToFile(Student student)
+        {
+            using (StreamWriter sWriter = new StreamWriter(pathStudents, true))
+                sWriter.WriteLine(student.ID.ToString() + "\t\t" + student.Name + "\t\t" + student.Surname + "\t\t" + student.Patronymic);
+            using (StreamWriter sWriter = new StreamWriter(pathTeacherTable, true))
+                sWriter.WriteLine(student.Surname + "\t\t\t" + student.Variant.Path_to_file + '\n' + student.Name + '\n' + student.Patronymic + '\n');
+        }
+
+        private void WriteToFile(Variant variant)
+        {
+            using (StreamWriter sWriter = new StreamWriter(pathVariants, true))
+                sWriter.WriteLine(variant.ID.ToString() + "\t\t" + variant.Path_to_file);
+        }
+
+        private void ReadNames(FileStream fileNames)
         {
             using (StreamReader sReader = new StreamReader(fileNames))
             {

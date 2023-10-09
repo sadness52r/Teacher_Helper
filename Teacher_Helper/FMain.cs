@@ -17,7 +17,6 @@ namespace Teacher_Helper
 
         public FMain()
         {
-            
             InitializeComponent();
         }
 
@@ -28,7 +27,7 @@ namespace Teacher_Helper
                 pathNames = openFileDialog1.FileName;
                 DataBaseController.CreateDB(pathNames);
                 MessageBox.Show("Tables have created succesfully!");
-                FCreateDB fCreateDB = new FCreateDB();
+                FView fCreateDB = new FView();
                 fCreateDB.ShowDialog();
             }
         }
