@@ -27,8 +27,9 @@ namespace Teacher_Helper
             {
                 pathNames = openFileDialog1.FileName;
                 DataBaseController.CreateDB(pathNames);
+                MessageBox.Show("Tables have created succesfully!");
                 FCreateDB fCreateDB = new FCreateDB();
-                fCreateDB.Show();
+                fCreateDB.ShowDialog();
             }
         }
     }

@@ -7,17 +7,22 @@ using System.Threading.Tasks;
 
 namespace Teacher_Helper
 {
-    class TableController
+    enum SHOWED_T
+    {
+        StudentsT, VariantsT, TeacherT
+    }
+
+    public class TableController
     {
         private string pathNames;
         private string pathDB;
         private string pathStudents;
         private string pathVariants;
+        private string pathTeacherTable;
         private FileStream fStreamNames, fStreamStudents, fStreamVars, fStreamTeacherTable;
         
         public int NumberStudents { get; set; }
         public int NumberVariants { get; set; }
-
         public List<Student> Students; 
         public List<Variant> Variants; 
 
@@ -35,6 +40,25 @@ namespace Teacher_Helper
         {
             pathStudents = pathDB + "/students.txt";
             pathVariants = pathDB + "/variants.txt";
+            pathTeacherTable = pathDB + "/marks.txt";
+
+            CreateTableVariants();
+            CreateTableStudents();
+            CreateTeacherTable();
+        }
+
+        private void CreateHeader(FileStream file, StreamWriter sWriter)
+        {
+            if (file.Name.Contains("students.txt"))
+                sWriter.WriteLine("id\t\tname\t\tsurname\t\tpatronymic");
+            else if (file.Name.Contains("variants.txt"))
+                sWriter.WriteLine("id\t\tpath_to_file");
+            else if (file.Name.Contains("marks.txt"))
+                sWriter.WriteLine("full_name\t\tpath_to_file\t\tmark");
+        }
+
+        private void CreateTableVariants()
+        {
             using (fStreamVars = new FileStream(pathVariants, FileMode.OpenOrCreate))
             {
                 using (StreamWriter sWriter = new StreamWriter(fStreamVars))
@@ -51,6 +75,10 @@ namespace Teacher_Helper
                     }
                 }
             }
+        }
+
+        private void CreateTableStudents()
+        {
             using (fStreamStudents = new FileStream(pathStudents, FileMode.OpenOrCreate))
             {
                 using (StreamWriter sWriter = new StreamWriter(fStreamStudents))
@@ -58,29 +86,31 @@ namespace Teacher_Helper
                     CreateHeader(fStreamStudents, sWriter);
 
                     using (fStreamNames = new FileStream(pathNames, FileMode.Open))
-                        ReadNames(fStreamNames, pathStudents);
+                        ReadNames(fStreamNames);
+
+                    foreach (var student in Students)
+                        sWriter.WriteLine(student.ID.ToString() + "\t\t" + student.Name + "\t\t" + student.Surname + "\t\t" + student.Patronymic);
+                }
+            }
+        }
+
+        private void CreateTeacherTable()
+        {
+            using (fStreamTeacherTable = new FileStream(pathTeacherTable, FileMode.OpenOrCreate))
+            {
+                using (StreamWriter sWriter = new StreamWriter(fStreamTeacherTable))
+                {
+                    CreateHeader(fStreamTeacherTable, sWriter);
 
                     foreach (var student in Students)
                     {
-                        sWriter.WriteLine(student.ID.ToString() + "\t\t" + student.Name + "\t\t" + student.Surname + "\t\t" + student.Patronymic);
+                        sWriter.WriteLine(student.Surname + "\t\t\t" + student.Variant.Path_to_file + '\n' + student.Name + '\n' + student.Patronymic + '\n');
                     }
                 }
             }
         }
 
-        private void CreateHeader(FileStream file, StreamWriter sWriter)
-        {
-            if (file.Name.Contains("students.txt"))
-            {
-                sWriter.WriteLine("id\t\tname\t\tsurname\t\tpatronymic");
-            }
-            else if (file.Name.Contains("variants.txt"))
-            {
-                sWriter.WriteLine("id\t\tpath_to_file");
-            }
-        }
-
-        void ReadNames(FileStream fileNames, string destPath)
+        void ReadNames(FileStream fileNames)
         {
             using (StreamReader sReader = new StreamReader(fileNames))
             {

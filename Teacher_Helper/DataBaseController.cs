@@ -9,7 +9,7 @@ namespace Teacher_Helper
 {
     public static class DataBaseController
     {
-        private static TableController tableController;
+        public static TableController tableController;
         public static Random rnd;
         public static void CreateDB(string pathNames)
         {
