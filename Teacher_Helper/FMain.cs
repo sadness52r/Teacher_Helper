@@ -31,5 +31,11 @@ namespace Teacher_Helper
                 fCreateDB.ShowDialog();
             }
         }
+
+        private void bImportDB_Click(object sender, EventArgs e)
+        {
+            FImportDB fImport = new FImportDB();
+            fImport.ShowDialog();
+        }
     }
 }

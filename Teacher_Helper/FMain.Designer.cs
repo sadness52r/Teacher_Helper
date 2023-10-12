@@ -54,6 +54,7 @@ namespace Teacher_Helper
             this.bImportDB.TabIndex = 1;
             this.bImportDB.Text = "IMPORT DATA BASE";
             this.bImportDB.UseVisualStyleBackColor = true;
+            this.bImportDB.Click += new System.EventHandler(this.bImportDB_Click);
             // 
             // openFileDialog1
             // 

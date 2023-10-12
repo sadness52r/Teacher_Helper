@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Teacher_Helper
 {
-    public partial class FAddStudent : Form
+    public partial class FAddVariant : Form
     {
         private FView fView;
 
-        public FAddStudent(FView fView)
+        public FAddVariant(FView fView)
         {
             this.fView = fView;
             InitializeComponent();
@@ -22,10 +22,12 @@ namespace Teacher_Helper
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            if (tbName.Text != "" && tbSurname.Text != "" && tbPatronymic.Text != "")
-            {
-                DataBaseController.tableController.Add(tbName.Text, tbSurname.Text, tbPatronymic.Text);
-                MessageBox.Show("Student " + tbName.Text + ' ' + tbSurname.Text + ' ' + tbPatronymic.Text + " has succesfully added!");
+            if (!DataBaseController.tableController.CheckTheSame(tbPathToFile.Text)){
+
+                Variant.TotalNumber++;
+                Variant variant = new Variant(Variant.TotalNumber, "var" + (DataBaseController.tableController.Variants.Count + 1));
+                DataBaseController.tableController.Add(variant);
+                MessageBox.Show("Variant " + tbPathToFile.Text + ' ' + " has succesfully added!");
                 fView.UpdateTable();
             }
         }

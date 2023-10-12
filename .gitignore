@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /Teacher_Helper/Names
+/Teacher_Helper/DataBases

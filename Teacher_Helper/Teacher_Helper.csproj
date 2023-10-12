@@ -47,11 +47,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseController.cs" />
+    <Compile Include="FAddMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAddMark.Designer.cs">
+      <DependentUpon>FAddMark.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FAddStudent.Designer.cs">
       <DependentUpon>FAddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAddVariant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAddVariant.Designer.cs">
+      <DependentUpon>FAddVariant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEditStudent.Designer.cs">
+      <DependentUpon>FEditStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FEditVariant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEditVariant.Designer.cs">
+      <DependentUpon>FEditVariant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FImportDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FImportDB.Designer.cs">
+      <DependentUpon>FImportDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRemoveStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRemoveStudent.Designer.cs">
+      <DependentUpon>FRemoveStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="FView.cs">
       <SubType>Form</SubType>
@@ -70,8 +106,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Variant.cs" />
+    <EmbeddedResource Include="FAddMark.resx">
+      <DependentUpon>FAddMark.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAddStudent.resx">
       <DependentUpon>FAddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAddVariant.resx">
+      <DependentUpon>FAddVariant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEditStudent.resx">
+      <DependentUpon>FEditStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEditVariant.resx">
+      <DependentUpon>FEditVariant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FImportDB.resx">
+      <DependentUpon>FImportDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRemoveStudent.resx">
+      <DependentUpon>FRemoveStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FView.resx">
       <DependentUpon>FView.cs</DependentUpon>

@@ -31,7 +31,7 @@ namespace Teacher_Helper
             Patronymic = patronymic;
             ID = id;
             Variant = variant;
-            Mark = 0;
+            Mark = int.MaxValue;
         }
     }
 }

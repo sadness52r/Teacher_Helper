@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -76,10 +77,10 @@ namespace Teacher_Helper
             dTable = new DataTable();
             dTable.Columns.Add("full_name", typeof(string));
             dTable.Columns.Add("path_to_file", typeof(string));
-            dTable.Columns.Add("mark", typeof(int));
+            dTable.Columns.Add("mark", typeof(string));
 
             foreach (var student in DataBaseController.tableController.Students)
-                dTable.Rows.Add(student.Surname + ' ' + student.Name + ' ' + student.Patronymic, student.Variant.Path_to_file);
+                dTable.Rows.Add(student.Surname + ' ' + student.Name + ' ' + student.Patronymic, student.Variant.Path_to_file, (student.Mark != int.MaxValue ? student.Mark.ToString() : ""));
             dataGridView1.DataSource = dTable;
             ShowedT = SHOWED_T.TeacherT;
         }
@@ -102,20 +103,66 @@ namespace Teacher_Helper
         private void bAdd_Click(object sender, EventArgs e)
         {
             FAddStudent fAddStudents;
-           
-            if (ShowedT == SHOWED_T.StudentsT)
-            {
-                fAddStudents = new FAddStudent(ShowedT, this);
-                fAddStudents.ShowDialog();
-            }
-            else if (ShowedT == SHOWED_T.VariantsT)
-            {
+            FAddVariant fAddVariant;
+            FAddMark fAddMark;
 
-            }
-            else if (ShowedT == SHOWED_T.TeacherT)
+            switch (ShowedT)
             {
-
+                case SHOWED_T.StudentsT:
+                    fAddStudents = new FAddStudent(this);
+                    fAddStudents.ShowDialog();
+                    break;
+                case SHOWED_T.VariantsT:
+                    fAddVariant = new FAddVariant(this);
+                    fAddVariant.ShowDialog();
+                    break;
+                case SHOWED_T.TeacherT:
+                    fAddMark = new FAddMark(this);
+                    fAddMark.ShowDialog();
+                    break;
+                default:
+                    break;
             }
+        }
+
+        private void bRemove_Click(object sender, EventArgs e)
+        {
+            FRemoveStudent fRemoveStudent;
+
+            switch (ShowedT)
+            {
+                case SHOWED_T.StudentsT:
+                    fRemoveStudent = new FRemoveStudent(this);
+                    fRemoveStudent.ShowDialog();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void bEdit_Click(object sender, EventArgs e)
+        {
+            FEditStudent fEditStudent;
+            FEditVariant fEditVariant;
+
+            switch (ShowedT)
+            {
+                case SHOWED_T.StudentsT:
+                    fEditStudent = new FEditStudent(this);
+                    fEditStudent.ShowDialog();
+                    break;
+                case SHOWED_T.VariantsT:
+                    fEditVariant = new FEditVariant(this);
+                    fEditVariant.ShowDialog();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void bSave_Click(object sender, EventArgs e)
+        {
+            DataBaseController.Save();
         }
     }
 }

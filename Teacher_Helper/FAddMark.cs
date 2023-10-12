@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Teacher_Helper
 {
-    public partial class FAddStudent : Form
+    public partial class FAddMark : Form
     {
         private FView fView;
 
-        public FAddStudent(FView fView)
+        public FAddMark(FView fView)
         {
             this.fView = fView;
             InitializeComponent();
@@ -22,10 +22,10 @@ namespace Teacher_Helper
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            if (tbName.Text != "" && tbSurname.Text != "" && tbPatronymic.Text != "")
+            if (DataBaseController.tableController.CheckCorrectStudentID(tbStudentID.Text) && DataBaseController.tableController.CheckCorrectMark(tbMark.Text))
             {
-                DataBaseController.tableController.Add(tbName.Text, tbSurname.Text, tbPatronymic.Text);
-                MessageBox.Show("Student " + tbName.Text + ' ' + tbSurname.Text + ' ' + tbPatronymic.Text + " has succesfully added!");
+                DataBaseController.tableController.Add(tbMark.Text, tbStudentID.Text);
+                MessageBox.Show("Student with ID " + tbStudentID.Text + " has got a mark " + tbMark.Text);
                 fView.UpdateTable();
             }
         }
