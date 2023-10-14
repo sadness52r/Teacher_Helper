@@ -164,5 +164,11 @@ namespace Teacher_Helper
         {
             DataBaseController.Save();
         }
+
+        private void bLoad_Click(object sender, EventArgs e)
+        {
+            FLoad fLoad = new FLoad();
+            fLoad.ShowDialog();
+        }
     }
 }

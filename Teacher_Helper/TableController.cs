@@ -73,9 +73,16 @@ namespace Teacher_Helper
             Student student;
             Student.TotalNumber++;
             if (numberRepeated != 0)
-                student = new Student(name, surname + numberRepeated.ToString(), patronymic, Student.TotalNumber, Variants[DataBaseController.rnd.Next(Variants.Count)]); 
+            {
+                DataBaseController.rnd = new Random();
+                student = new Student(name, surname + numberRepeated.ToString(), patronymic, Student.TotalNumber, Variants[DataBaseController.rnd.Next(Variants.Count)]);
+            } 
             else
+            {
+                DataBaseController.rnd = new Random();
                 student = new Student(name, surname, patronymic, Student.TotalNumber, Variants[DataBaseController.rnd.Next(Variants.Count)]);
+            }
+                
             Students.Add(student);
             WriteToFile(student);
         }
@@ -88,9 +95,9 @@ namespace Teacher_Helper
 
         public void Add(string mark, string studentID)
         {
-            int id = int.Parse(studentID);
-            Students[id - 1].Mark = int.Parse(mark);
-            WriteToFile(id, mark);
+            int ind = BinSearchStudents(Students, int.Parse(studentID));
+            Students[ind].Mark = int.Parse(mark);
+            WriteToFile(ind, mark);
         }
 
         public void RemoveStudent(int id)
@@ -162,6 +169,15 @@ namespace Teacher_Helper
             if (int.TryParse(mark, out result))
                 return true;
             return false;
+        }
+
+        public void UpdateData()
+        {
+            Students.Clear();
+            Variants.Clear();
+            ReadTableStudents();
+            ReadTableVariants();
+            ReadTeacherTable();
         }
 
         private int CheckTheSame(string name, string surname, string patronymic)

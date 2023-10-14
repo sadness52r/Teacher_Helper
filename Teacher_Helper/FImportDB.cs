@@ -20,7 +20,7 @@ namespace Teacher_Helper
 
         private void FImportDB_Load(object sender, EventArgs e)
         {
-            List<DirectoryInfo> dInfo = DataBaseController.CreateList();
+            List<DirectoryInfo> dInfo = DataBaseController.CreateList("../../DataBases", "../../DataBases/DataBase");
             foreach (var dataBase in dInfo)
                 listView1.Items.Add(dataBase.Name);
         }
@@ -29,10 +29,6 @@ namespace Teacher_Helper
         {
             DataBaseController.OpenDB("../../DataBases/" + listView1.SelectedItems[0].Text);
             MessageBox.Show("Tables have imported succesfully!");
-        }
-
-        private void FImportDB_FormClosed(object sender, FormClosedEventArgs e)
-        {
             FView fCreateDB = new FView();
             fCreateDB.Show();
         }

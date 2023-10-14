@@ -83,6 +83,12 @@
     <Compile Include="FImportDB.Designer.cs">
       <DependentUpon>FImportDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="FLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLoad.Designer.cs">
+      <DependentUpon>FLoad.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRemoveStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FImportDB.resx">
       <DependentUpon>FImportDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FLoad.resx">
+      <DependentUpon>FLoad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRemoveStudent.resx">
       <DependentUpon>FRemoveStudent.cs</DependentUpon>

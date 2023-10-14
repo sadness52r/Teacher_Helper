@@ -1,7 +1,6 @@
-﻿
-namespace Teacher_Helper
+﻿namespace Teacher_Helper
 {
-    partial class FImportDB
+    partial class FLoad
     {
         /// <summary>
         /// Required designer variable.
@@ -40,21 +39,21 @@ namespace Teacher_Helper
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(772, 348);
-            this.listView1.TabIndex = 0;
+            this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             // 
-            // FImportDB
+            // FLoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 372);
             this.Controls.Add(this.listView1);
-            this.Name = "FImportDB";
+            this.Name = "FLoad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FImportDB";
-            this.Load += new System.EventHandler(this.FImportDB_Load);
+            this.Text = "FLoad";
+            this.Load += new System.EventHandler(this.FLoad_Load);
             this.ResumeLayout(false);
 
         }
